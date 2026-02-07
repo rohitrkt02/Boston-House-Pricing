@@ -1,3 +1,123 @@
-<h1>
-    Hello World
-</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Boston House Price Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 400px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 6px 0 12px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .prediction {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Boston House Price Prediction</h1>
+
+    <form action="{{ url_for('predict') }}" method="post">
+
+        <label>CRIM</label>
+        <input type="number" step="any" name="CRIM" required>
+
+        <label>ZN</label>
+        <input type="number" step="any" name="ZN" required>
+
+        <label>INDUS</label>
+        <input type="number" step="any" name="INDUS" required>
+
+        <label>CHAS (0 or 1)</label>
+        <input type="number" step="1" name="CHAS" required>
+
+        <label>NOX</label>
+        <input type="number" step="any" name="NOX" required>
+
+        <label>RM</label>
+        <input type="number" step="any" name="RM" required>
+
+        <label>AGE</label>
+        <input type="number" step="any" name="AGE" required>
+
+        <label>DIS</label>
+        <input type="number" step="any" name="DIS" required>
+
+        <label>RAD</label>
+        <input type="number" step="any" name="RAD" required>
+
+        <label>TAX</label>
+        <input type="number" step="any" name="TAX" required>
+
+        <label>PTRATIO</label>
+        <input type="number" step="any" name="PTRATIO" required>
+
+        <label>B</label>
+        <input type="number" step="any" name="B" required>
+
+        <label>LSTAT</label>
+        <input type="number" step="any" name="LSTAT" required>
+
+        <button type="submit">Predict Price</button>
+    </form>
+
+    {% if prediction_text %}
+        <div class="prediction">
+            {{ prediction_text }}
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
